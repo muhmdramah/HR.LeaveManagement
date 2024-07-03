@@ -7,6 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Features\LeaveRequest\Handlers\**" />
+    <Compile Remove="Features\LeaveRequest\Requests\**" />
+    <EmbeddedResource Remove="Features\LeaveRequest\Handlers\**" />
+    <EmbeddedResource Remove="Features\LeaveRequest\Requests\**" />
+    <None Remove="Features\LeaveRequest\Handlers\**" />
+    <None Remove="Features\LeaveRequest\Requests\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
   </ItemGroup>
@@ -16,8 +25,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Features\LeaveAllocation\Handlers\Commands\" />
+    <Folder Include="Features\LeaveAllocation\Requests\Commands\" />
     <Folder Include="Features\LeaveRequest\" />
-    <Folder Include="Features\LeaveAllocation\" />
     <Folder Include="Features\LeaveTypes\Handlers\Commands\" />
     <Folder Include="Features\LeaveTypes\Requests\Command\" />
   </ItemGroup>
