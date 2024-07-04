@@ -18,9 +18,13 @@ namespace HR.LeaveManagement.Application.Features.LeaveRequests.Handlers.Command
             _mapper = mapper;
         }
 
-        public Task<Unit> Handle(DeleteLeaveRequestCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(DeleteLeaveRequestCommand request, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            var leaveRequest = await _leaveRequestRepository.GetAsync(request.Id);
+
+            await _leaveRequestRepository.DeleteAsync(leaveRequest);
+
+            return Unit.Value;
         }
     }
 }
