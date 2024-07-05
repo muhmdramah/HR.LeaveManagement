@@ -27,7 +27,6 @@ namespace HR.LeaveManagement.Application.Features.LeaveTypes.Handlers.Commands
             if (!validationResult.IsValid)
                 throw new Exception();
 
-
             var leaveType = _mapper.Map<LeaveType>(request.LeaveTypeDto);
 
             leaveType = await _leaveTypeRepository.AddAsync(leaveType);
