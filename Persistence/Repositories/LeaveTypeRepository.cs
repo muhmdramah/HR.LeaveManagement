@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using HR.LeaveManagement.Application.Persistence.Contracts;
+using HR.LeaveManagement.Domain;
 
 namespace HR.LeaveManagement.Persistence.Repositories
 {
-    internal class LeaveTypeRepository
+    public class LeaveTypeRepository : GenericRepository<LeaveType>, ILeaveTypeRepository
     {
+        public LeaveTypeRepository(HRLeaveManagementDbContext context) : base(context)
+        {
+        }
     }
 }
