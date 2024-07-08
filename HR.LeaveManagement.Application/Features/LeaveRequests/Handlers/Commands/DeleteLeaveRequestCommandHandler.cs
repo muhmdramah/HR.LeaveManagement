@@ -21,9 +21,8 @@ namespace HR.LeaveManagement.Application.Features.LeaveRequests.Handlers.Command
 
         public async Task<Unit> Handle(DeleteLeaveRequestCommand request, CancellationToken cancellationToken)
         {
-            var leaveRequest = await _leaveRequestRepository.GetAsync(request.Id);
-            if (leaveRequest is null)
-                throw new NotFoundException(nameof(Domain.LeaveRequest), request.Id);
+            var leaveRequest = await _leaveRequestRepository.GetAsync(request.Id)
+                ?? throw new NotFoundException(nameof(Domain.LeaveRequest), request.Id);
 
             await _leaveRequestRepository.DeleteAsync(leaveRequest);
 
