@@ -9,9 +9,11 @@ namespace HR.LeaveManagement.Application
     {
         public static IServiceCollection ConfigureApplicationServices(this IServiceCollection services)
         {
-            //services.AddAutoMapper(Assembly.GetExecutingAssembly());
-            services.AddAutoMapper(typeof(MappingProfile));
+            services.AddAutoMapper(c => c.AddProfile(typeof(MappingProfile)));
+
             services.AddMediatR(Assembly.GetExecutingAssembly());
+
+            //services.AddMediatR(c => c.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
 
             return services;
         }
