@@ -14,7 +14,7 @@ namespace HR.LeaveManagement.Application.DTOs.LeaveType.Validators
             RuleFor(p => p.DefaultDays)
                 .NotEmpty().WithMessage("{PropertyName} is required!")
                 .GreaterThan(1).WithMessage("{PropertyName} must be at least 1!")
-                .LessThan(1).WithMessage("{PropertyName} must be less than {ComparisonValue}!");
+                .LessThan(100).WithMessage("{PropertyName} must be less than {ComparisonValue}!");
         }
     }
 }

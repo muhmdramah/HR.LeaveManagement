@@ -2,5 +2,6 @@
 {
     public interface ILeaveAllocationService
     {
+        //Task<Response<int>> CreateLeaveAllocations(int leaveTypeId);
     }
 }
