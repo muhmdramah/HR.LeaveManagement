@@ -25,7 +25,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HR.LeaveManagement.Infrastr
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{137D369E-D15C-4C24-B78D-A247D32F6057}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HR.LeaveManagement.MVC", "HR.LeaveManagement.MVC\HR.LeaveManagement.MVC.csproj", "{1E2C9EDC-01B5-4F66-83EA-90BDF5153C4A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HR.LeaveManagement.MVC", "HR.LeaveManagement.MVC\HR.LeaveManagement.MVC.csproj", "{1E2C9EDC-01B5-4F66-83EA-90BDF5153C4A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HR.LeaveManagement.Identity", "HR.LeaveManagement.Identity\HR.LeaveManagement.Identity.csproj", "{56646CED-F064-4681-9D18-5E6D28FF3496}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{1E2C9EDC-01B5-4F66-83EA-90BDF5153C4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1E2C9EDC-01B5-4F66-83EA-90BDF5153C4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1E2C9EDC-01B5-4F66-83EA-90BDF5153C4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56646CED-F064-4681-9D18-5E6D28FF3496}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56646CED-F064-4681-9D18-5E6D28FF3496}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56646CED-F064-4681-9D18-5E6D28FF3496}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56646CED-F064-4681-9D18-5E6D28FF3496}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -72,6 +78,7 @@ Global
 		{0789264C-3D7B-40AF-BE03-20B602CE6E6B} = {C28546AC-10AB-4152-8299-3F63BCBBD5C2}
 		{137D369E-D15C-4C24-B78D-A247D32F6057} = {DD33B5F9-DF79-42FC-B8B0-4A5ACE8BC0F1}
 		{1E2C9EDC-01B5-4F66-83EA-90BDF5153C4A} = {137D369E-D15C-4C24-B78D-A247D32F6057}
+		{56646CED-F064-4681-9D18-5E6D28FF3496} = {C28546AC-10AB-4152-8299-3F63BCBBD5C2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FF0AD6BD-642F-4B6D-9F1D-8B4C080E8F62}
