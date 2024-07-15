@@ -95,6 +95,7 @@ namespace HR.LeaveManagement.Identity.Services
             }
         }
 
+
         private async Task<JwtSecurityToken> GenerateToken(ApplicationUser user)
         {
             var userClaims = await _userManager.GetClaimsAsync(user);
