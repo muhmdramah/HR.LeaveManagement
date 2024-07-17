@@ -10,8 +10,8 @@ namespace HR.LeaveManagement.MVC.Services
 
         public LeaveAllocationService(IClient httpclient, ILocalStorageService localStorageService) : base(httpclient, localStorageService)
         {
-            _localStorageService = localStorageService;
-            _httpclient = httpclient;
+            this._localStorageService = localStorageService;
+            this._httpclient = httpclient;
         }
 
         public async Task<Response<int>> CreateLeaveAllocations(int leaveTypeId)
@@ -19,9 +19,13 @@ namespace HR.LeaveManagement.MVC.Services
             try
             {
                 var response = new Response<int>();
-                CreateLeaveAllocationDto createLeaveAllocation = new() { LeaveTypeId = leaveTypeId };
+
+                var createLeaveAllocation = new CreateLeaveAllocationDto
+                { LeaveTypeId = leaveTypeId };
+
                 AddBearerToken();
-                var apiResponse = await _client.LeaveAllocationsPOSTAsync(createLeaveAllocation);
+
+                var apiResponse = await _client.LeaveAllocationPOSTAsync(createLeaveAllocation);
                 if (apiResponse.Success)
                 {
                     response.Success = true;
