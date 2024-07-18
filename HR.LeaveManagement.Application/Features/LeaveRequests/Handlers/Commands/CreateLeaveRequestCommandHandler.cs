@@ -47,8 +47,14 @@ namespace HR.LeaveManagement.Application.Features.LeaveRequests.Handlers.Command
 
             var allocation = await _leaveAllocationRepository
                 .GetUserAllocations(userId, request.LeaveRequestDto!.LeaveTypeId);
+
             int daysRequested = (int)(request.LeaveRequestDto.EndDate
                 - request.LeaveRequestDto.StartDate).TotalDays;
+            if (daysRequested > allocation.NumberOfDays)
+            {
+                validationResult.Errors.Add(new FluentValidation.Results.ValidationFailure(
+                    nameof(request.LeaveRequestDto.EndDate), "You do not have enough days for this request"));
+            }
 
             if (!validationResult.IsValid)
             {
