@@ -67,22 +67,24 @@ namespace HR.LeaveManagement.Application.Features.LeaveRequests.Handlers.Command
             leaveRequest.RequestingEmployeeId = userId;
             leaveRequest = await _leaveRequestRepository.AddAsync(leaveRequest);
 
-            response.Success = true;
-            response.Message = "Creation Successful!";
-            response.Id = leaveRequest.Id;
 
-            var emailAddress = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.Email).Value;
-
-            var email = new Email
-            {
-                To = emailAddress,
-                Body = $"Your leave request for {request.LeaveRequestDto!.StartDate:D} to {request.LeaveRequestDto!.EndDate}" +
-                " has been submitted successfully.",
-                Subject = "Leave request submitted!"
-            };
 
             try
             {
+                response.Success = true;
+                response.Message = "Creation Successful!";
+                response.Id = leaveRequest.Id;
+
+                var emailAddress = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.Email)!.Value;
+
+                var email = new Email
+                {
+                    To = emailAddress,
+                    Body = $"Your leave request for {request.LeaveRequestDto!.StartDate:D} to {request.LeaveRequestDto!.EndDate}" +
+                    " has been submitted successfully.",
+                    Subject = "Leave request submitted!"
+                };
+
                 await _emailSender.SendEmailAsync(email);
             }
             catch (Exception ex)

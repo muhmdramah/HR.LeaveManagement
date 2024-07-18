@@ -8,13 +8,13 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 namespace HR.LeaveManagement.MVC.Controllers
 {
     [Authorize]
-    public class LeaveRequestController : Controller
+    public class LeaveRequestsController : Controller
     {
         private readonly ILeaveTypeService _leaveTypeService;
         private readonly ILeaveRequestService _leaveRequestService;
         private readonly IMapper _mapper;
 
-        public LeaveRequestController(ILeaveTypeService leaveTypeService, ILeaveRequestService leaveRequestService,
+        public LeaveRequestsController(ILeaveTypeService leaveTypeService, ILeaveRequestService leaveRequestService,
             IMapper mapper)
         {
             this._leaveTypeService = leaveTypeService;

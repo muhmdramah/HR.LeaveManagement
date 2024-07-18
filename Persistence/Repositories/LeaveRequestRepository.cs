@@ -8,34 +8,40 @@ namespace HR.LeaveManagement.Persistence.Repositories
     {
         private readonly HRLeaveManagementDbContext _context;
 
-        public LeaveRequestRepository(HRLeaveManagementDbContext context) : base(context)
+        public LeaveRequestRepository(HRLeaveManagementDbContext dbContext) : base(dbContext)
         {
-            _context = context;
+            _context = dbContext;
         }
 
-        public async Task ChangeApprovalStatus(LeaveRequest leaveRequest, bool? approvalStatus)
+        public async Task ChangeApprovalStatus(LeaveRequest leaveRequest, bool? ApprovalStatus)
         {
-            leaveRequest.Approved = approvalStatus;
+            leaveRequest.Approved = ApprovalStatus;
             _context.Entry(leaveRequest).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
         }
 
         public async Task<List<LeaveRequest>> GetLeaveRequestsWithDetails()
         {
-            var LeaveRequest = await _context.LeaveRequests
-                .Include(e => e.LeaveType)
+            var leaveRequests = await _context.LeaveRequests
+                .Include(q => q.LeaveType)
                 .ToListAsync();
+            return leaveRequests;
+        }
 
-            return LeaveRequest;
+        public async Task<List<LeaveRequest>> GetLeaveRequestsWithDetails(string userId)
+        {
+            var leaveRequests = await _context.LeaveRequests.Where(q => q.RequestingEmployeeId == userId)
+                .Include(q => q.LeaveType)
+                .ToListAsync();
+            return leaveRequests;
         }
 
         public async Task<LeaveRequest> GetLeaveRequestWithDetails(int id)
         {
-            var LeaveRequest = await _context.LeaveRequests
-                .Include(e => e.LeaveType)
-                .FirstOrDefaultAsync(e => e.Id.Equals(id));
+            var leaveRequest = await _context.LeaveRequests
+                .Include(q => q.LeaveType)
+                .FirstOrDefaultAsync(q => q.Id == id);
 
-            return LeaveRequest!;
+            return leaveRequest;
         }
     }
 }
