@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using HR.LeaveManagement.Domain;
 using HR.LeaveManagement.MVC.Contracts;
 using HR.LeaveManagement.MVC.Models;
 using HR.LeaveManagement.MVC.Services.Base;
@@ -73,7 +72,7 @@ namespace HR.LeaveManagement.MVC.Services
 
             var model = new AdminLeaveRequestViewVM
             {
-                TotalRequests = LeaveRequest.Count,
+                TotalRequests = leaveRequests.Count,
                 ApprovedRequests = leaveRequests.Count(q => q.Approved == true),
                 PendingRequests = leaveRequests.Count(q => q.Approved == null),
                 RejectedRequests = leaveRequests.Count(q => q.Approved == false),
