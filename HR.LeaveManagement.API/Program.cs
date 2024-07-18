@@ -12,7 +12,7 @@ builder.Services.ConfigurePersistenceServices(builder.Configuration);
 builder.Services.ConfigureIdentityServices(builder.Configuration);
 
 builder.Services.AddControllers();
-
+builder.Services.AddHttpContextAccessor();
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "HR LeaveManagement Api", Version = "V1" });
