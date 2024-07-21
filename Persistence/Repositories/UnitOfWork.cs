@@ -7,9 +7,9 @@ namespace HR.LeaveManagement.Persistence.Repositories
 {
     public class UnitOfWork : IUnitOfWork
     {
-
         private readonly HRLeaveManagementDbContext _context;
         private readonly IHttpContextAccessor _httpContextAccessor;
+
         private ILeaveAllocationRepository _leaveAllocationRepository;
         private ILeaveTypeRepository _leaveTypeRepository;
         private ILeaveRequestRepository _leaveRequestRepository;
