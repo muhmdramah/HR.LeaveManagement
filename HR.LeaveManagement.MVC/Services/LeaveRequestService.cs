@@ -39,7 +39,7 @@ namespace HR.LeaveManagement.MVC.Services
                 var response = new Response<int>();
                 CreateLeaveRequestDto createLeaveRequest = _mapper.Map<CreateLeaveRequestDto>(leaveRequest);
                 AddBearerToken();
-                var apiResponse = await _client.LeaveRequestsPOSTAsync(createLeaveRequest);
+                var apiResponse = await _client.LeaveRequestPOSTAsyncS(createLeaveRequest);
                 if (apiResponse.Success)
                 {
                     response.Data = apiResponse.Id;
@@ -68,7 +68,7 @@ namespace HR.LeaveManagement.MVC.Services
         public async Task<AdminLeaveRequestViewVM> GetAdminLeaveRequestList()
         {
             AddBearerToken();
-            var leaveRequests = await _client.LeaveRequestsAllAsync(isLoggedInUser: false);
+            var leaveRequests = await _client.LeaveRequestAllAsync(false);
 
             var model = new AdminLeaveRequestViewVM
             {
@@ -84,15 +84,15 @@ namespace HR.LeaveManagement.MVC.Services
         public async Task<LeaveRequestVM> GetLeaveRequest(int id)
         {
             AddBearerToken();
-            var leaveRequest = await _client.LeaveRequestsGETAsync(id);
+            var leaveRequest = await _client.LeaveRequestGETAsync(id);
             return _mapper.Map<LeaveRequestVM>(leaveRequest);
         }
 
         public async Task<EmployeeLeaveRequestViewVM> GetUserLeaveRequests()
         {
             AddBearerToken();
-            var leaveRequests = await _client.LeaveRequestsAllAsync(isLoggedInUser: true);
-            var allocations = await _client.LeaveAllocationsAllAsync(isLoggedInUser: true);
+            var leaveRequests = await _client.LeaveRequestAllAsync(true);
+            var allocations = await _client.LeaveAllocationAllAsync(true);
             var model = new EmployeeLeaveRequestViewVM
             {
                 LeaveAllocations = _mapper.Map<List<LeaveAllocationVM>>(allocations),
