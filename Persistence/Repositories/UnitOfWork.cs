@@ -38,7 +38,7 @@ namespace HR.LeaveManagement.Persistence.Repositories
         {
             var username = _httpContextAccessor.HttpContext.User.FindFirst(CustomClaimTypes.Uid)?.Value;
 
-            await _context.SaveChangesAsync(username);
+            await _context.SaveChangesAsync();
         }
     }
 }
